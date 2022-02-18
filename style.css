@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+} 
+
+/* charte graphique */
+
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: black;
+}
+
+.white39 {
+    background-color: rgba(255, 255, 255, 0.39);
+}
+
+.blue39 {
+    background-color: rgba(148, 178, 255, 0.39);
+}
+
+.red39{
+    background-color: rgba(255, 28, 28, 0.39);
+
+}
+
+.green39{
+    background-color: rgba(52, 255, 48, 0.39);
+
+}
+
+/* styles */
+
+main{
+    background-image: url(img/spyingers-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+header, footer{
+    background-color: #373737;
+}
+
+header {
+    border-bottom: black 5px solid;
+    height: 20vh;
+}
+footer {
+    border-top: black 5px solid;
+    height: 70px;
+}
+
+section {
+    min-height: calc(80vh - 70px - 50px);
+}
+
+
+header div img{
+    max-height: 15vh;
+}
+.burger{
+    height: 20px;
+}
+.navbar-toggler{
+    border: none;
+}
+.navbar-toggler:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.pagination {
+    height: 50px;
+}
