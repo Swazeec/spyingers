@@ -1,7 +1,12 @@
 <?php
+session_start();
 require_once('./src/db.php');
-require_once('./src/header.php');
-?>
+if(isset($_SESSION['connect'])){ 
+    require_once('./src/header-connected.php');
+
+} else {
+    require_once('./src/header.php');
+}?>
 
 
 <section class="row d-block">
@@ -101,4 +106,9 @@ require_once('./src/header.php');
         </p> 
     </div>
 </nav>
-<?php require_once ('./src/footer.php');
+<?php require_once ('./src/footer.php'); ?>
+
+<script src="./src/scripts/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

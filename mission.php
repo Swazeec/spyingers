@@ -1,7 +1,12 @@
 <?php
+session_start();
 require_once('./src/db.php');
-require_once('./src/header.php');
+if(isset($_SESSION['connect'])){ 
+    require_once('./src/header-connected.php');
 
+} else {
+    require_once('./src/header.php');
+}
 ?>
 
 <section class="row d-block">
@@ -78,7 +83,7 @@ require_once('./src/header.php');
 
     <!-- entête de la section -->
     <div class="col-12  pt-4 pt-md-5 pb-md-5 mb-3 mb-md-0">
-        <h2 class=" text-white text-center pb-3"><?php echo $missionDetail['title']  ?> </h2>      
+        <h2 class=" text-white text-center pb-3"><?php echo strtoupper($missionDetail['title'])  ?> </h2>      
         <div class="row mr-auto d-flex justify-content-center ">
             <p class="col-8 col-md-4 rounded-pill blue39 text-center p-1" id="status"><?php echo $missionDetail['status']  ?></p>
         </div>      
@@ -159,4 +164,9 @@ require_once('./src/header.php');
         <i class="bi bi-arrow-left"> retour</i>
     </a>
 </nav>
-<?php require_once ('./src/footer.php');
+<?php require_once ('./src/footer.php');?>
+
+<script src="./src/scripts/missionDetails.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

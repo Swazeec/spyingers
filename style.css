@@ -75,3 +75,11 @@ header div img{
 .pagination {
     height: 50px;
 }
+
+.btn{
+    background-color: #F23F3F;
+    border: none;
+}
+.btn:hover{
+    background-color:black;
+}
