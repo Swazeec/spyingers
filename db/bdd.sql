@@ -222,7 +222,7 @@ INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, 
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Mandarine', 'Rathausstrasse 15', '10178', 'Berlin', 4, 2, 15);
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Kaki', 'Spiridon-Louis-Ring 21', '80809', 'Munich', 1, 2, 20);
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Orange', 'Theater square, 1', '125009', 'Moscou', 3, 4, 7);
-INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Clémentine', '5 Place du corbeau', '56300', 'Pontivy', 2, 1, 4);
+INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Clémentine', '5 Place du corbeau', '56300', 'Pontivy', 2, 1, null);
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Litchi', 'Piazza Nazarion Sauro; 25/r', '50124', 'Florence', 4, 3, 16);
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Pomme', '45 Rockfellere Plaza, New York', '10111', 'New York', 1, 6, 5);
 INSERT INTO safehouses (code, address, postalCode, city, SHType_id, country_id, mission_id) VALUES ('Poire', 'C. San Jorge, 12', '50001', 'Saragosse', 1, 8, 9);
@@ -261,6 +261,9 @@ INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, m
 INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Françoise', 'Couturier', '1999-02-28', 'Brahe', 1, 18);
 INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Nikitin', 'Igorevich', '2002-08-28', 'Harriot', 4, 19);
 INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Mathias', 'Flügel', '1996-10-06', 'Lipperhey', 2, 20);
+-- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Willy', 'Wonka', '1996-10-06', 'Chocolat', 2, null);
+-- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Skelligton', 'Jack', '1996-10-06', 'Nightmare', 2, null);
+-- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Mona', 'Lisa', '1996-10-06', 'Joconde', 1, null);
 
 ## ajout des agents
 INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Louise', 'Attaque', '1998-06-01', 1);
@@ -284,6 +287,9 @@ INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALU
 INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Robin', 'Feix', '1975-11-20', 1);
 INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Matt', 'Smith', '1982-10-28', 9);
 INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Barbara', 'Gourde', '1991-09-28', 1);
+INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Capitaine', 'Haddock', '1986-06-01', 3);
+INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Louis', 'Armstrong', '1950-06-01', 5);
+
 
 ## assignation des agents à des missions
 INSERT INTO agents_missions (agent_id, mission_id) VALUES (1, 1);
@@ -307,6 +313,7 @@ INSERT INTO agents_missions (agent_id, mission_id) VALUES (18,18);
 INSERT INTO agents_missions (agent_id, mission_id) VALUES (19,19);
 INSERT INTO agents_missions (agent_id, mission_id) VALUES (20,20);
 INSERT INTO agents_missions (agent_id, mission_id) VALUES (21, 1);
+
 
 ## ajout des spécialités des agents
 INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (1, 5);
@@ -336,6 +343,9 @@ INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (3, 6);
 INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (12, 4);
 INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (10, 4);
 INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (20, 4);
+INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (22, 1);
+INSERT INTO agents_specialities (agent_id, speciality_id) VALUES (23, 1);
+
 
 ## ajout des contacts
 INSERT INTO contacts (firstname, lastname, codename, nationality_id) VALUES ('Liza', 'Emery', 'Agate', 5);

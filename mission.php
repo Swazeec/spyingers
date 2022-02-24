@@ -11,11 +11,11 @@ if(isset($_SESSION['connect'])){
 
 <section class="row d-block">
 <?php
-    $count = $bdd->prepare('SELECT COUNT(*) AS COUNT FROM missions');
-    $count->execute();
-    $countNumber = $count->fetch(PDO::FETCH_ASSOC);
+############# ATTENTION !! IL FAUT TRAITER LES ID INEXISTANTS !!!!!!!!!!!
+    $lastmissionID = $bdd->prepare('SELECT id FROM missions ORDER BY id DESC LIMIT 1;');
+    $lastmissionID->execute();
     
-    if(!isset($_GET['mission']) || is_int($_GET['mission']) || $_GET['mission'] > $countNumber['COUNT']){
+    if(!isset($_GET['mission']) || is_int($_GET['mission']) || $_GET['mission'] > $lastmissionID){
         header('location:./index.php');
     } else {
         $missionID = htmlspecialchars($_GET['mission']);
@@ -83,7 +83,7 @@ if(isset($_SESSION['connect'])){
 
     <!-- entête de la section -->
     <div class="col-12  pt-4 pt-md-5 pb-md-5 mb-3 mb-md-0">
-        <h2 class=" text-white text-center pb-3"><?php echo strtoupper($missionDetail['title'])  ?> </h2>      
+        <h2 class=" text-white text-center pb-3"><?php echo mb_strtoupper($missionDetail['title'])  ?> </h2>      
         <div class="row mr-auto d-flex justify-content-center ">
             <p class="col-8 col-md-4 rounded-pill blue39 text-center p-1" id="status"><?php echo $missionDetail['status']  ?></p>
         </div>      

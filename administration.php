@@ -72,7 +72,7 @@ if(isset($_SESSION['connect'])){
                             <input type="password" required name="password"id="password" placeholder="Votre mot de passe" class="border-start-0 form-control">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-light rounded-pill text-white px-5 mt-4" id="lgSubmit">Se connecter</button>
+                    <button type="submit" class="btn btn-red rounded-pill text-white px-5 mt-4" id="lgSubmit">Se connecter</button>
                 </form>
             </div>
         </article>

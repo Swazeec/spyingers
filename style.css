@@ -30,6 +30,10 @@ a:hover{
 
 }
 
+.bg-grey{
+    background-color: #6d6d6d;
+}
+
 /* styles */
 
 main{
@@ -76,10 +80,20 @@ header div img{
     height: 50px;
 }
 
-.btn{
+.btn-red{
     background-color: #F23F3F;
     border: none;
 }
 .btn:hover{
     background-color:black;
+}
+
+#addMissionForm input:focus, #addMissionForm select:focus, #addMissionForm textarea:focus {
+    background-color: rgba(109, 109, 109, 0.39);
+    color: black !important;
+}
+
+#completeMissionForm input:focus, #completeMissionForm select:focus, #completeMissionForm textarea:focus {
+    background-color: rgba(109, 109, 109, 0.39);
+    color: black !important;
 }
