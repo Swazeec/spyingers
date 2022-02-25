@@ -12,6 +12,13 @@ if(isset($_SESSION['connect'])){
 <section class="row d-block">
 <?php
 ############# ATTENTION !! IL FAUT TRAITER LES ID INEXISTANTS !!!!!!!!!!!
+// function checkValidMission($requestID){
+//     $lastmissionID = $bdd->prepare('SELECT id FROM missions WHERE id .$requestID;');
+//     $lastmissionID->execute();
+//     return $lastmissionID->rowCount(); 
+// }
+
+
     $lastmissionID = $bdd->prepare('SELECT id FROM missions ORDER BY id DESC LIMIT 1;');
     $lastmissionID->execute();
     

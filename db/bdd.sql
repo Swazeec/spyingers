@@ -264,6 +264,9 @@ INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, m
 -- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Willy', 'Wonka', '1996-10-06', 'Chocolat', 2, null);
 -- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Skelligton', 'Jack', '1996-10-06', 'Nightmare', 2, null);
 -- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Mona', 'Lisa', '1996-10-06', 'Joconde', 1, null);
+-- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('Bob', 'L''éponge', '1996-10-06', 'Océan', 2, null);
+-- INSERT INTO targets (firstname, lastname, birthdate, codename, nationality_id, mission_id) VALUES ('La pantère', 'Rose', '1996-10-06', 'Jazzy', 5, null);
+
 
 ## ajout des agents
 INSERT INTO agents (idcode, firstname, lastname, birthdate, nationality_id) VALUES (uuid(), 'Louise', 'Attaque', '1998-06-01', 1);
