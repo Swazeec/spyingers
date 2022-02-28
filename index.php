@@ -3,13 +3,24 @@ session_start();
 require_once('./src/db.php');
 if(isset($_SESSION['connect'])){ 
     require_once('./src/header-connected.php');
-
 } else {
     require_once('./src/header.php');
 }?>
 
 
 <section class="row d-block">
+    <?php
+    if(isset($_SESSION['connect'])){
+        if(isset($_GET['delete']) && $_GET['delete'] == 1){ ?>
+            <div class="col-12 bg-success text-white p-3 text-center">
+                Mission supprimée avec succès !
+            </div>
+
+
+        <?php }
+    }
+        
+    ?>
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
         <h2 class=" text-white text-center pb-3">MISSIONS</h2>
 
