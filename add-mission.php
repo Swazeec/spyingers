@@ -1,10 +1,10 @@
 <?php
 session_start();
 if(isset($_SESSION['connect'])){ 
+    require_once('./src/db.php');
+    require_once('./src/add-mission-security.php');
     if(empty($_POST['otherAgents'])){
-        require_once('./src/db.php');
         require_once('./src/header-connected.php');
-        require_once('./src/add-mission-security.php');
 ?>
 
 <section class="row d-block">
@@ -12,11 +12,11 @@ if(isset($_SESSION['connect'])){
     <!-- entête de la section -->
     <div class="col-12  pt-4 pt-md-5 pb-md-5 mb-3 mb-md-0">
         <h2 class=" text-white text-center pb-3">AJOUTER UNE MISSION</h2>      
-        <nav class=" row text-center d-flex justify-content-center">
+        <!-- <nav class=" row text-center d-flex justify-content-center">
             <a href="#" class=" col-6 col-md-4 col-lg-2 px-3 fs-5">Ajouter une cible</a>
             <a href="#" class="col-6 col-md-4 col-lg-2 px-3 fs-5">Ajouter un agent</a>
             <a href="#" class="col-6 col-md-4 col-lg-2 px-3 fs-5">Ajouter un contact</a>
-        </nav>      
+        </nav>       -->
     </div>
     <!-- corps de la section -->
     <div class="col-12">
@@ -54,7 +54,7 @@ if(isset($_SESSION['connect'])){
                             </select>
                         </div>
                         <div class="col-12 col-md-8 mb-3 d-flex justify-content-center align-items-center">
-                            <button type="button" class="btn rounded-pill green39 px-5 text-white fw-bold border-dark"><i class="bi bi-plus"></i> Ajouter une cible ?</button>
+                            <button type="button" class="btn rounded-pill bg-primary text-white fw-bold px-3 px-md-5 "><i class="bi bi-plus"></i> Ajouter une cible ?</button>
                         </div>
                         <div class="col-12 col-md-8 mb-3 d-flex flex-column" >
                             <label for="title" class="fs-6 fw-bold p-0 m-0">Titre de la mission</label>
@@ -460,12 +460,12 @@ if(isset($_SESSION['connect'])){
     } ?>
     </div>
 </section>
-<!-- espace navigation retour -->
+<!-- espace navigation retour
 <nav class="row pagination">
     <a href="javascript:history.back()" class="col-12 align-items-center text-white ">
         <i class="bi bi-arrow-left"> retour</i>
     </a>
-</nav>
+</nav> -->
 <?php } else {
     header('location:./index.php');
 }

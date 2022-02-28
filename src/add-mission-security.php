@@ -56,7 +56,6 @@ if(empty($_POST['otherAgents'])){
         
                 ## on update les targets avec le mission_id :
                     foreach($targets as $target){
-                        var_dump(intVal($target));
                         $targateUpdate = $bdd->prepare('UPDATE targets SET targets.mission_id = :missionID WHERE targets.id = :id ;');
                         $targateUpdate->bindValue(':missionID', $missionId);
                         $targateUpdate->bindValue(':id', intVal($target));

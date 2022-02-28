@@ -1,4 +1,4 @@
-<footer class="row text-center p-2">
+<footer class="row text-center p-2 mt-4">
     <div>
         <a href="../administration.php">Espace d'administration</a>
     </div>

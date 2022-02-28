@@ -11,13 +11,55 @@ if(isset($_SESSION['connect'])){
 
 <section class="row d-block">
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
-        <h2 class=" text-white text-center pb-4">MISSIONS</h2>
-        <nav class="text-center d-none d-lg-block">
-            <a href="./index.php?missions=prep" class="px-3 fs-5">En préparation</a>
-            <a href="./index.php?missions=ongoing" class="px-3 fs-5">En cours</a>
-            <a href="./index.php?missions=success" class="px-3 fs-5">Terminées</a>
-            <a href="./index.php?missions=failed" class="px-3 fs-5">Échecs</a>
-            <a href="./index.php?missions=all" class="px-3 fs-5">Toutes les missions</a>
+        <h2 class=" text-white text-center pb-3">MISSIONS</h2>
+
+        <!-- <nav class="text-center bg-secondary rounded-pill p-2 d-none d-md-block">
+            <a href="./index.php?missions=prep" class=" px-3 fs-6">En préparation</a>
+            <a href="./index.php?missions=ongoing" class="px-3 fs-6">En cours</a>
+            <a href="./index.php?missions=success" class="px-3 fs-6">Terminées</a>
+            <a href="./index.php?missions=failed" class="px-3 fs-6">Échecs</a>
+            <a href="./index.php?missions=all" class="px-3 fs-6">Toutes les missions</a>
+            <?php 
+            if(isset($_SESSION['connect'])){ ?>
+            <a href="./add-mission.php" class="px-3 fs-6 text-nowrap text-decoration-underline"><i class="bi bi-plus"></i> Ajouter une mission</a>
+            
+            <?php }
+            ?>
+        </nav> -->
+
+        <!-- NAVBAR -->
+        <nav class="bg-secondary p-2 navbar navbar-expand-lg navbar-light mb-3 mb-md-0">
+            <div class="container-fluid">
+                <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="text-white"><i class="bi bi-plus-circle fs-3"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                        <li class="nav-item">
+                            <a href="./index.php?missions=prep" class="nav-link text-white px-3 fs-6">En préparation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?missions=ongoing" class="nav-link text-white px-3 fs-6">En cours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?missions=success" class="nav-link text-white px-3 fs-6">Terminées</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?missions=failed" class="nav-link text-white px-3 fs-6">Échecs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index.php?missions=all" class="nav-link text-white px-3 fs-6">Toutes les missions</a>
+                        </li>
+                        <?php if(isset($_SESSION['connect'])){ ?>  
+                        <li class="nav-item">
+                            <a href="./add-mission.php" class=" nav-link text-white px-3 fs-6 text-nowrap text-decoration-underline"><i class="bi bi-plus"></i> Ajouter une mission</a>
+                        </li>
+                        <?php }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            
         </nav>
     </div>
     <div class="col-12">
@@ -59,6 +101,7 @@ if(isset($_SESSION['connect'])){
                                         FROM missions 
                                         JOIN status ON status.id = missions.status_id
                                         JOIN countries ON countries.id = missions.country_id
+                                        order by missions.startDate desc
                                         ');
                         break;
                 }
@@ -67,6 +110,7 @@ if(isset($_SESSION['connect'])){
                                             FROM missions 
                                             JOIN status ON status.id = missions.status_id
                                             JOIN countries ON countries.id = missions.country_id
+                                            order by missions.startDate desc
                                             ');
             }
                 if ($req->execute()){

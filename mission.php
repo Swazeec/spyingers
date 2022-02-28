@@ -166,7 +166,7 @@ if(isset($_SESSION['connect'])){
 ?>
 </section>
 <!-- espace navigation retour -->
-<nav class="row pagination">
+<nav class="row pagination ">
     <a href="javascript:history.back()" class="col-12 align-items-center text-white ">
         <i class="bi bi-arrow-left"> retour</i>
     </a>

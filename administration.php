@@ -21,7 +21,7 @@ if(isset($_SESSION['connect'])){
                 <img src="./img/login-illustration.svg" alt="illustration de connexion">
             </div>
             <div class="col-12 col-md-6 d-flex flex-column justify-content-around px-md-5">
-                    <a class="rounded-pill white39 text-center text-black p-2 mx-lg-5 my-3 my-md-0" href="#">Les missions</a>
+                    <a class="rounded-pill white39 text-center text-black p-2 mx-lg-5 my-3 my-md-0" href="./index.php">Les missions</a>
                     <a class="rounded-pill white39 text-center text-black p-2 mx-lg-5 my-3 my-md-0" href="#">Les cibles</a>
                     <a class="rounded-pill white39 text-center text-black p-2 mx-lg-5 my-3 my-md-0" href="#">Les agents</a>
                     <a class="rounded-pill white39 text-center text-black p-2 mx-lg-5 my-3 my-md-0" href="#">Les contacts</a>

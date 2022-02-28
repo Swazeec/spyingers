@@ -37,11 +37,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les missions</a>
                                     <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="../index.php">Toutes les missions</a></li>
-                                        <li><a class="dropdown-item" href="../index.php?missions=prep">En préparation</a></li>
-                                        <li><a class="dropdown-item" href="../index.php?missions=ongoing">En cours</a></li>
-                                        <li><a class="dropdown-item" href="../index.php?missions=success">Terminées</a></li>
-                                        <li><a class="dropdown-item" href="../index.php?missions=failed">Échecs</a></li>
+                                        <li><a class="dropdown-item" href="../index.php">Consulter les missions</a></li>
+                                        <li><a class="dropdown-item" href="../add-mission.php">Ajouter des missions</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
