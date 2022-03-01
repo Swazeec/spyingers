@@ -58,4 +58,4 @@ if(!empty($_POST['missionIdToDelete'])){
     // RENVOYER ACCUEIL
 
     header('location:./index.php?delete=1');
-}
+} 

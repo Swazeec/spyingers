@@ -98,3 +98,7 @@ header div img{
     background-color: rgba(109, 109, 109, 0.39);
     color: black !important;
 }
+input:focus, select:focus, textarea:focus {
+    background-color: rgba(109, 109, 109, 0.39);
+    color: black !important;
+}

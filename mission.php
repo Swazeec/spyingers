@@ -178,8 +178,8 @@ if(isset($_SESSION['connect'])){ ?>
             <div class="modal-content">
                 <div class="modal-body">
                     <p>Êtes-vous sûr(e) de vouloir modifier cette mission ?</p>
-                    <form action="" method="post">
-                        <input type="text" name="missionId" class="d-none" value="<?php echo $missionID  ?>"></input>
+                    <form action="./modify-mission.php" method="post">
+                        <input type="text" name="missionIdToModify" class="d-none" value="<?php echo $missionID  ?>"></input>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary">Modifier</button>
                     </form>
@@ -214,12 +214,12 @@ if(isset($_SESSION['connect'])){ ?>
 
 
 </section>
-<!-- espace navigation retour -->
+<!-- espace navigation retour
 <nav class="row pagination ">
     <a href="javascript:history.back()" class="col-12 align-items-center text-white ">
         <i class="bi bi-arrow-left"> retour</i>
     </a>
-</nav>
+</nav> -->
 <?php require_once ('./src/footer.php');?>
 
 <script src="./src/scripts/missionDetails.js"></script>
