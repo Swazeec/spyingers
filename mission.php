@@ -2,16 +2,16 @@
 session_start();
 require_once('./src/db.php');
     
-if(!isset($_GET['mission']) || is_int($_GET['mission'])){
-    header('location:./index.php');
+if(!isset($_GET['mission']) || intval($_GET['mission']) ===0){
+    header('location:./index.php?invalid');
 } else {
     $missionID = htmlspecialchars($_GET['mission']);
     $requestedMission = $bdd->prepare('SELECT id FROM missions WHERE id = :reqid');
     $requestedMission->bindValue(':reqid', $missionID);
     $requestedMission->execute();
     $count = $requestedMission->rowCount();
-    if($count ==0){
-        header('location:./index.php');
+    if($count == 0){
+        header('location:./index.php?error=invalid');
     } else {
         if(isset($_SESSION['connect'])){ 
             require_once('./src/delete-mission.php');
@@ -23,7 +23,17 @@ if(!isset($_GET['mission']) || is_int($_GET['mission'])){
         ?>
         
         <section class="row d-block">
-        <?php
+        <?php 
+        if(isset($_SESSION['connect'])){ 
+            if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
+                <div class="col-12 bg-success text-white p-3 text-center">
+                    Mission modifiée avec succès !
+                </div>
+
+
+            <?php }
+        }
+        
         $bdd->query('SET lc_time_names = \'fr_FR\'');
         $req = $bdd->prepare(
             'SELECT  missions.title AS title, 
@@ -178,8 +188,8 @@ if(isset($_SESSION['connect'])){ ?>
             <div class="modal-content">
                 <div class="modal-body">
                     <p>Êtes-vous sûr(e) de vouloir modifier cette mission ?</p>
-                    <form action="./modify-mission.php" method="post">
-                        <input type="text" name="missionIdToModify" class="d-none" value="<?php echo $missionID  ?>"></input>
+                    <form action="./modify-mission.php?mission=<?= $missionID ?>" method="post">
+                        <!-- <input type="text" name="missionIdToModify" class="d-none" value="<?php echo $missionID  ?>"></input> -->
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary">Modifier</button>
                     </form>

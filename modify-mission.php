@@ -2,12 +2,21 @@
 session_start();
 if(isset($_SESSION['connect'])){ 
     require_once('./src/db.php');
-    if(!empty($_POST['missionIdToModify'])){
+    if(!empty($_GET['mission']) && intVal($_GET['mission']) != 0){
+        require_once('./src/modify-mission-security.php');
         require_once('./src/header-connected.php');
-        $missionId = htmlspecialchars($_POST['missionIdToModify']);  ?>
+        $missionId = htmlspecialchars($_GET['mission']);  ?>
 
         <section class="row d-block">
+        <?php 
+            if(isset($_GET['message']) && $_GET['message'] == 'error'){ ?>
+                <div class="col-12 bg-danger text-white p-3 text-center">
+                    Un problème est survenu. Merci de remplir correctement les informations !
+                </div>
 
+
+            <?php }
+        ?>
             <!-- entête de la section -->
             <div class="col-12  pt-4 pt-md-5 pb-md-5 mb-3 mb-md-0">
                 <h2 class=" text-white text-center pb-3">MODIFIER LA MISSION</h2>      
@@ -236,7 +245,7 @@ if(isset($_SESSION['connect'])){
                     <!-- AJOUTER DES AGENTS -->
                     <div class="col-12 col-md-4 mb-3 d-flex flex-column">
                         <label for="otherAgents" class="fs-6 fw-bold p-0 m-0">Ajouter d'autre(s) agent(s)</label>
-                        <select id="otherAgents" name="otherAgents[]" class="fs-6 text-white p-1 m-0 form-select border-0 white39" multiple required>
+                        <select id="otherAgents" name="otherAgents[]" class="fs-6 text-white p-1 m-0 form-select border-0 white39" multiple>
                             <?php 
                             // RECUP NATIONALITE DES CIBLES 
                             $targetNationalities=[];
@@ -288,12 +297,6 @@ if(isset($_SESSION['connect'])){
                         
                     </div>
 
-
-                    <!-- pour récupérer l'id de la mission à la validation -->
-                    <div class=" d-none col-12 col-md-4 mb-3" >
-                        <p class="fs-6 fw-bold p-0 m-0">Mission :</p>
-                        <input type="text" name="missionId" class="fs-6 text-white p-0 m-0" value="<?php echo $missionId  ?>"></input>
-                    </div>
                     <div class="col-12 col-md-4 offset-md-2 d-flex flex-column ">
                         <button type="submit" class="btn rounded-pill bg-success text-white"><i class="bi bi-check2"></i> Valider</button>
                     </div>
@@ -307,10 +310,12 @@ if(isset($_SESSION['connect'])){
         </section>
 
     <?php } else {
-        header('location:./index.php');
+        header('location:./index.php?error=invalid');
+        /* require_once('./src/modify-mission-security.php');
+        require_once('./src/header-connected.php'); */
     }
 } else {
-    header('location:./index.php');
+    // header('location:./index.php');
 }
 
 require_once ('./src/footer.php');?>
