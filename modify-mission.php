@@ -298,7 +298,7 @@ if(isset($_SESSION['connect'])){
                     </div>
 
                     <div class="col-12 col-md-4 offset-md-2 d-flex flex-column ">
-                        <button type="submit" class="btn rounded-pill bg-success text-white"><i class="bi bi-check2"></i> Valider</button>
+                        <button type="submit" class="btn rounded-pill bg-success text-white" id="submit"><i class="bi bi-check2"></i> Valider</button>
                     </div>
                     <div class="col-12 col-md-4 mt-2 mt-md-0 d-flex flex-column ">
                         <a type="button" class="btn rounded-pill bg-danger text-white" href="./mission.php?mission=<?= $missionId ?>"><i class="bi bi-x"></i> Annuler</a>
@@ -319,7 +319,7 @@ if(isset($_SESSION['connect'])){
 }
 
 require_once ('./src/footer.php');?>
-
+<script src="./src/scripts/modify-mission.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
