@@ -24,20 +24,6 @@ if(isset($_SESSION['connect'])){
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
         <h2 class=" text-white text-center pb-3">MISSIONS</h2>
 
-        <!-- <nav class="text-center bg-secondary rounded-pill p-2 d-none d-md-block">
-            <a href="./index.php?missions=prep" class=" px-3 fs-6">En préparation</a>
-            <a href="./index.php?missions=ongoing" class="px-3 fs-6">En cours</a>
-            <a href="./index.php?missions=success" class="px-3 fs-6">Terminées</a>
-            <a href="./index.php?missions=failed" class="px-3 fs-6">Échecs</a>
-            <a href="./index.php?missions=all" class="px-3 fs-6">Toutes les missions</a>
-            <?php 
-            if(isset($_SESSION['connect'])){ ?>
-            <a href="./add-mission.php" class="px-3 fs-6 text-nowrap text-decoration-underline"><i class="bi bi-plus"></i> Ajouter une mission</a>
-            
-            <?php }
-            ?>
-        </nav> -->
-
         <!-- NAVBAR -->
         <nav class="bg-secondary p-2 navbar navbar-expand-lg navbar-light mb-3 mb-md-0">
             <div class="container-fluid">
@@ -128,7 +114,7 @@ if(isset($_SESSION['connect'])){
                     while ($mission = $req->fetch(PDO::FETCH_ASSOC)){ ?>
 
                         <article class="col-12 col-md-4 col-lg-3 mb-3">
-                        <div class="card white39">
+                        <div class="card h-100 white39">
                             <div class="d-flex align-items-center">
     
                                 <div class="card-body">

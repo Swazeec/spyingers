@@ -41,8 +41,12 @@
                                         <li><a class="dropdown-item" href="../add-mission.php">Ajouter des missions</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Les cibles</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les cibles</a>
+                                    <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="../targets.php">Consulter les cibles</a></li>
+                                        <li><a class="dropdown-item" href="../add-target.php">Ajouter des cibles</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="#">Les agents</a>

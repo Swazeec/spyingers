@@ -55,13 +55,13 @@ function verifyDates(value1, value2){
 }
 
 function verifySafehouses(values){
-    shError = 0
+    let shError = 0
     values.forEach(function(value){
         if(isNaN(value.value)){
-            sfError = 1
+            shError = 1
         } 
     })
-    if(sfError != 0){
+    if(shError != 0){
         error += 'Planque(s) invalide(s).\n'
     }
 }
