@@ -92,8 +92,6 @@ submitBtn.addEventListener('click', function(event){
         alert(error)
         error=''
         event.preventDefault()
-    } else {
-        alert(safehouses.value)
-    }
+    } 
 
 })
