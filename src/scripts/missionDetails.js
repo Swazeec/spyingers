@@ -1,5 +1,4 @@
 let missionDetailStatus = document.getElementById('status')
-console.log(missionDetailStatus.textContent)
 
 switch(missionDetailStatus.textContent){
     case 'En cours':
