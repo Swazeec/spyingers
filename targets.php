@@ -8,15 +8,27 @@ if(isset($_SESSION['connect'])){
 
 <section class="row d-block">
     <?php
-    if(isset($_SESSION['connect'])){
-        if(isset($_GET['delete']) && $_GET['delete'] == 1){ ?>
+        if(!empty($_GET['delete'])){
+            $targetToDelete = intval($_GET['delete']);
+            $req = $bdd->prepare('DELETE FROM targets WHERE id = :id');
+            $req->bindValue(':id', $targetToDelete);
+            $req->execute();
+            ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Mission supprimée avec succès !
+                Cible supprimée avec succès !
             </div>
-
-
+        <?php
+        }
+        if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
+            <div class="col-12 bg-success text-white p-3 text-center">
+                Cible ajoutée avec succès !
+            </div>
         <?php }
-    }
+        if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
+            <div class="col-12 bg-success text-white p-3 text-center">
+                Cible modifiée avec succès !
+            </div>
+        <?php }
         
     ?>
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
@@ -58,10 +70,12 @@ if(isset($_SESSION['connect'])){
                     'unassigned' => 'null',
                     'assigned' => 'not null',
                 );
-                $req = $bdd->prepare('SELECT targets.id AS id,
+                $bdd->query('SET lc_time_names = \'fr_FR\'');
+                $req = $bdd->prepare('SELECT targets.id AS tid,
                                         targets.firstname AS firstname, 
                                         targets.lastname AS lastname, 
                                         targets.codename AS codename, 
+                                        DATE_FORMAT(targets.birthdate, "%d/%m/%Y") AS birthdate,
                                         nationalities.name AS nationality, 
                                         missions.id AS mid, 
                                         missions.codename AS mCodename,
@@ -71,36 +85,47 @@ if(isset($_SESSION['connect'])){
                                 LEFT JOIN missions ON missions.id = targets.mission_id
                                 LEFT JOIN status ON status.id = missions.status_id
                                 WHERE mission_id is '. $statusgetter[$_GET['targets']]);
-            }
-            else{
-                    $req = $bdd->prepare('SELECT targets.firstname AS firstname, 
-                                                targets.lastname AS lastname, 
-                                                targets.codename AS codename, 
-                                                nationalities.name AS nationality, 
-                                                missions.id AS mid, 
-                                                missions.title AS mCodename,
-                                                status.name AS status
-                                        FROM targets 
-                                        JOIN nationalities ON nationalities.id = targets.nationality_id
-                                        LEFT JOIN missions ON missions.id = targets.mission_id
-                                        LEFT JOIN status ON status.id = missions.status_id
-                                        ');
+            } else{
+                $bdd->query('SET lc_time_names = \'fr_FR\'');
+                $req = $bdd->prepare('SELECT targets.id AS tid,
+                                            targets.firstname AS firstname, 
+                                            targets.lastname AS lastname, 
+                                            targets.codename AS codename, 
+                                            DATE_FORMAT(targets.birthdate, "%d/%m/%Y") AS birthdate,
+                                            nationalities.name AS nationality, 
+                                            missions.id AS mid, 
+                                            missions.title AS mCodename,
+                                            status.name AS status
+                                    FROM targets 
+                                    JOIN nationalities ON nationalities.id = targets.nationality_id
+                                    LEFT JOIN missions ON missions.id = targets.mission_id
+                                    LEFT JOIN status ON status.id = missions.status_id
+                                    ');
             }
             if($req->execute()){
                 while ($target = $req->fetch(PDO::FETCH_ASSOC)){ ?>
 
                     <article class="col-12 col-md-4 col-lg-3 mb-3">
                     <div class="card h-100 white39">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold fs-6"><?php echo $target['firstname'].' '. $target['lastname']   ?> </h5>
+                        <div class="card-body ">
+                            <h5 class="card-title fw-bold fs-6 d-flex justify-content-between"><?php echo $target['firstname'].' '. $target['lastname']   ?> 
+                                <span><a class="btn py-0 text-primary" href="./modify-target.php?target=<?= $target['tid'] ?>" ><i class="bi bi-pencil"></i></a>
+                                <?php
+                                    if($target['mid'] === null){ ?>
+                                        <a class="btn py-0 text-danger" href="./targets.php?delete=<?= $target['tid'] ?>"><i class="bi bi-trash3-fill"></i></a>
+                                    <?php } ?>
+                                </span>
+                            </h5>
                             <h6 class="card-subtitle mb-2 text-white"> Nom de code : <?php echo $target['codename']    ?></h6>
+                            <p class="card-text text-white">Naissance : <?php echo $target['birthdate']    ?></p>
                             <p class="card-text text-white">Nationalité : <?php echo $target['nationality']    ?></p>
                             
                         </div>
-                        <div class="card-footer border-0">
+                        <div class="card-footer border-0 bg-grey">
                             <?php
                                 if($target['mid'] === null){ ?>
                                     <p class="card-text text-white pb-0 mb-0">Mission : aucune</p><br>
+                                    
                                 <?php } else { ?>
                                     <p class="card-text text-primary pb-0 mb-0"><a href="./mission.php?mission=<?php echo $target['mid']?>" class="card-link ">Mission : <?php echo $target['mCodename'] ?>   </a></p>
                                     <p class="card-text text-primary status"><?php echo $target['status'] ?></p>
