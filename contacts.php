@@ -24,11 +24,11 @@ if(isset($_SESSION['connect'])){
                 Cible ajoutée avec succès !
             </div>
         <?php }
-        /* if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
+        if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Cible modifiée avec succès !
+                Contact modifié avec succès !
             </div>
-        <?php } */
+        <?php }
         
     ?>
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
@@ -91,7 +91,7 @@ if(isset($_SESSION['connect'])){
                     <div class="card h-100 white39">
                         <div class="card-body ">
                             <h5 class="card-title fw-bold fs-6 d-flex justify-content-between"><?php echo $contact['firstname'].' '. $contact['lastname']   ?> 
-                                <span><a class="btn py-0 text-primary" href="./modify-target.php?target=<?= $contact['id'] ?>" ><i class="bi bi-pencil"></i></a>
+                                <span><a class="btn py-0 text-primary" href="./modify-contact.php?contact=<?= $contact['id'] ?>" ><i class="bi bi-pencil"></i></a>
                                 <!-- <?php
                                     if($target['mid'] === null){ ?>
                                         <a class="btn py-0 text-danger" href="./targets.php?delete=<?= $target['tid'] ?>"><i class="bi bi-trash3-fill"></i></a>
