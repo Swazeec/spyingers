@@ -8,17 +8,17 @@ if(isset($_SESSION['connect'])){
 
 <section class="row d-block">
     <?php
-        /* if(!empty($_GET['delete'])){
-            $targetToDelete = intval($_GET['delete']);
-            $req = $bdd->prepare('DELETE FROM targets WHERE id = :id');
-            $req->bindValue(':id', $targetToDelete);
+        if(!empty($_GET['delete'])){
+            $contactToDelete = intval($_GET['delete']);
+            $req = $bdd->prepare('DELETE FROM contacts WHERE id = :id');
+            $req->bindValue(':id', $contactToDelete);
             $req->execute();
             ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Cible supprimée avec succès !
+                Contact supprimé avec succès !
             </div>
         <?php
-        } */
+        }
         if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
                 Cible ajoutée avec succès !
@@ -92,10 +92,14 @@ if(isset($_SESSION['connect'])){
                         <div class="card-body ">
                             <h5 class="card-title fw-bold fs-6 d-flex justify-content-between"><?php echo $contact['firstname'].' '. $contact['lastname']   ?> 
                                 <span><a class="btn py-0 text-primary" href="./modify-contact.php?contact=<?= $contact['id'] ?>" ><i class="bi bi-pencil"></i></a>
-                                <!-- <?php
-                                    if($target['mid'] === null){ ?>
-                                        <a class="btn py-0 text-danger" href="./targets.php?delete=<?= $target['tid'] ?>"><i class="bi bi-trash3-fill"></i></a>
-                                    <?php } ?> -->
+                                <?php
+                                    $countReq = $bdd->prepare('SELECT COUNT(*) AS count FROM contacts_missions WHERE contact_id = :cid ;');
+                                    $countReq->bindValue(':cid', $contact['id']);
+                                    $countReq->execute();
+                                    $count = $countReq->fetch(PDO::FETCH_ASSOC);
+                                    if($count['count'] == 0){ ?>
+                                        <a class="btn py-0 text-danger" href="./contacts.php?delete=<?= $contact['id'] ?>"><i class="bi bi-trash3-fill"></i></a>
+                                    <?php } ?>
                                 </span>
                             </h5>
                             <h6 class="card-subtitle mb-2 text-white"> Nom de code : <?php echo $contact['codename']    ?></h6>
