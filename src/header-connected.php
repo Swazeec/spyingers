@@ -51,8 +51,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="#">Les agents</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Les contacts</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les contacts</a>
+                                    <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="../contacts.php">Consulter les contacts</a></li>
+                                        <li><a class="dropdown-item" href="../add-contact.php">Ajouter des contacts</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="#">Les planques</a>
