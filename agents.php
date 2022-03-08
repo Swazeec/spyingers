@@ -8,22 +8,32 @@ if(isset($_SESSION['connect'])){
 
 <section class="row d-block">
     <?php
-        /* if(!empty($_GET['delete'])){
-            $contactToDelete = intval($_GET['delete']);
-            $req = $bdd->prepare('DELETE FROM contacts WHERE id = :id');
-            $req->bindValue(':id', $contactToDelete);
+        if(!empty($_GET['delete'])){
+            $agentToDelete = intval($_GET['delete']);
+            // SUPPR. LES SPECIALITES
+            $specReq = $bdd->prepare('DELETE FROM agents_specialities WHERE agent_id = :aid');
+            $specReq->bindValue(':aid', $agentToDelete);
+            $specReq->execute();
+
+            // SUPPR. L'AGENT
+            $req = $bdd->prepare('DELETE FROM agents WHERE id = :id');
+            $req->bindValue(':id', $agentToDelete);
             $req->execute();
             ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Contact supprimé avec succès !
+                Agent supprimé avec succès !
             </div>
         <?php
-        } */
-        /* if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
+        }
+        if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Cible ajoutée avec succès !
+                Agent ajouté avec succès !
             </div>
-        <?php } */
+        <?php } else if (isset($_GET['message']) && $_GET['message'] == 'error'){ ?>
+            <div class="col-12 bg-danger text-white p-3 text-center">
+                Un problème est survenu lors de la création de votre agent. Veuillez le supprimer et recommencer.
+            </div>
+        <?php }
        /*  if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
                 Contact modifié avec succès !
@@ -78,10 +88,10 @@ if(isset($_SESSION['connect'])){
                                         agents.firstname AS firstname,
                                         agents.lastname AS lastname,
                                         agents.idcode AS idcode,
-                                        nationalities.name AS nationality
-                                FROM agents
-                                JOIN nationalities ON nationalities.id = agents.nationality_id
-                                ORDER BY lastname;
+                                        nationalities.name AS nationality,
+                                    FROM agents
+                                    JOIN nationalities ON nationalities.id = agents.nationality_id
+                                    ORDER BY lastname;
                 ');
             } else {
                 $req = $bdd->prepare('SELECT agents.id AS id,
@@ -89,9 +99,9 @@ if(isset($_SESSION['connect'])){
                                         agents.lastname AS lastname,
                                         agents.idcode AS idcode,
                                         nationalities.name AS nationality
-                                FROM agents
-                                JOIN nationalities ON nationalities.id = agents.nationality_id
-                                ORDER BY id DESC ;
+                                    FROM agents
+                                    JOIN nationalities ON nationalities.id = agents.nationality_id
+                                    ORDER BY id DESC ;
                 ');
 
             }
@@ -110,12 +120,32 @@ if(isset($_SESSION['connect'])){
                                     $countReq->execute();
                                     $count = $countReq->fetch(PDO::FETCH_ASSOC);
                                     if($count['count'] == 0){ ?>
-                                        <a class="btn py-0 text-danger" href="./contacts.php?delete=<?= $agent['id'] ?>"><i class="bi bi-trash3-fill"></i></a>
+                                        <a class="btn py-0 text-danger" href="./agents.php?delete=<?= $agent['id'] ?>"><i class="bi bi-trash3-fill"></i></a>
                                     <?php } ?>
                                 </span>
                             </h5>
-                            <h6 class="card-subtitle mb-2 text-white"> Identification : <?php echo $agent['idcode']    ?></h6>
+                            <h6 class="card-subtitle mb-2 text-white">Identification : <?php echo $agent['idcode']    ?></h6>
                             <p class="card-text text-white">Nationalité : <?php echo $agent['nationality']    ?></p>
+                            <p class="card-text text-white">Spécialité(s) : <?php 
+                                $specialities = [];
+                                $specialitiesReq = $bdd->prepare('SELECT specialities.name 
+                                                                FROM specialities 
+                                                                JOIN agents_specialities ON agents_specialities.speciality_id = specialities.id 
+                                                                WHERE agents_specialities.agent_id = :aid ;');
+                                $specialitiesReq->bindValue(':aid', $agent['id']);
+                                $specialitiesReq->execute();
+                                while($speciality = $specialitiesReq->fetch(PDO::FETCH_ASSOC)){
+                                    array_push($specialities, $speciality['name']);
+                                }
+                                for($i = 0 ; $i < count($specialities) ; $i++){
+                                    if($specialities[$i] == end($specialities)){
+                                        echo $specialities[$i];
+                                    } else {
+                                        echo $specialities[$i].', ';
+                                    }
+                                } ?>
+                            </p>
+                        
                             <a data-bs-toggle="modal" data-bs-target="#seeMissions<?= $agent['id'] ?>"><u>Voir ses missions</u></a>
                         </div>
                     </div>

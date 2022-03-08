@@ -48,9 +48,12 @@
                                         <li><a class="dropdown-item" href="../add-target.php">Ajouter des cibles</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Les agents</a>
-                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les agents</a>
+                                    <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="../agents.php">Consulter les agents</a></li>
+                                        <li><a class="dropdown-item" href="../add-agent.php">Ajouter des agents</a></li>
+                                    </ul>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les contacts</a>
                                     <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
