@@ -18,13 +18,13 @@ if(isset($_SESSION['connect'])){
                 Cible supprimée avec succès !
             </div>
         <?php
-        }
+        } */
         if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
                 Cible ajoutée avec succès !
             </div>
         <?php }
-        if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
+        /* if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
                 Cible modifiée avec succès !
             </div>
