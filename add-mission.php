@@ -54,7 +54,7 @@ if(isset($_SESSION['connect'])){
                             </select>
                         </div>
                         <div class="col-12 col-md-8 mb-3 d-flex justify-content-center align-items-center">
-                            <button type="button" class="btn rounded-pill bg-primary text-white fw-bold px-3 px-md-5 "><i class="bi bi-plus"></i> Ajouter une cible ?</button>
+                            <a href="./add-target.php" type="button" class="btn rounded-pill bg-primary text-white fw-bold px-3 px-md-5 "><i class="bi bi-plus"></i> Ajouter une cible ?</a>
                         </div>
                         <div class="col-12 col-md-8 mb-3 d-flex flex-column" >
                             <label for="title" class="fs-6 fw-bold p-0 m-0">Titre de la mission</label>

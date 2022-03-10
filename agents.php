@@ -98,7 +98,7 @@ if(isset($_SESSION['connect'])){
                                         agents.firstname AS firstname,
                                         agents.lastname AS lastname,
                                         agents.idcode AS idcode,
-                                        nationalities.name AS nationality,
+                                        nationalities.name AS nationality
                                     FROM agents
                                     JOIN nationalities ON nationalities.id = agents.nationality_id
                                     ORDER BY lastname;
