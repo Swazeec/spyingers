@@ -61,8 +61,12 @@
                                         <li><a class="dropdown-item" href="../add-contact.php">Ajouter des contacts</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Les planques</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Les planques</a>
+                                    <ul class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="../safehouses.php">Consulter les planques</a></li>
+                                        <li><a class="dropdown-item" href="../add-safehouse.php">Ajouter des planques</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="../logout.php">Se déconnecter</a>

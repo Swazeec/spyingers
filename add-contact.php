@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// DASHBOARD D'ADMINISTRATION
 if(isset($_SESSION['connect'])){ 
     require_once('./src/db.php');
     require_once('./src/add-contact-security.php');
