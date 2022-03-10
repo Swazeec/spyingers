@@ -21,12 +21,17 @@ if(isset($_SESSION['connect'])){
         }
         if(isset($_GET['message']) && $_GET['message'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Cible ajoutée avec succès !
+                Contact ajouté avec succès !
             </div>
         <?php }
         if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
                 Contact modifié avec succès !
+            </div>
+        <?php }
+        if(isset($_GET['error']) && $_GET['error'] == 'invalid'){ ?>
+            <div class="col-12 bg-danger text-white p-3 text-center">
+                Le contact demandé est invalide.
             </div>
         <?php }
         

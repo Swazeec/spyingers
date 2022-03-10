@@ -34,11 +34,21 @@ if(isset($_SESSION['connect'])){
                 Un problème est survenu lors de la création de votre agent. Veuillez le supprimer et recommencer.
             </div>
         <?php }
-       /*  if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
+        if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Contact modifié avec succès !
+                Agent modifié avec succès !
             </div>
-        <?php } */
+        <?php }
+        if(isset($_GET['update']) && $_GET['update'] == 'error'){ ?>
+            <div class="col-12 bg-danger text-white p-3 text-center">
+                Une erreur est survenue lors de la modification de votre agent.
+            </div>
+        <?php }
+        if(isset($_GET['error']) && $_GET['error'] == 'invalid'){ ?>
+            <div class="col-12 bg-danger text-white p-3 text-center">
+                L'agent demandé est invalide ou n'est pas disponible.
+            </div>
+        <?php }
         
     ?>
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
@@ -113,7 +123,7 @@ if(isset($_SESSION['connect'])){
                     <div class="card h-100 white39">
                         <div class="card-body ">
                             <h5 class="card-title fw-bold fs-6 d-flex justify-content-between"><?php echo $agent['firstname'].' '. $agent['lastname']   ?> 
-                                <span><a class="btn py-0 text-primary" href="./modify-contact.php?contact=<?= $agent['id'] ?>" ><i class="bi bi-pencil"></i></a>
+                                <span><a class="btn py-0 text-primary" href="./modify-agent.php?agent=<?= $agent['id'] ?>" ><i class="bi bi-pencil"></i></a>
                                 <?php
                                     $countReq = $bdd->prepare('SELECT COUNT(*) AS count FROM agents_missions WHERE agent_id = :aid ;');
                                     $countReq->bindValue(':aid', $agent['id']);

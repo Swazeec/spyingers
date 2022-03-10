@@ -29,6 +29,11 @@ if(isset($_SESSION['connect'])){
                 Cible modifiée avec succès !
             </div>
         <?php }
+        if(isset($_GET['error']) && $_GET['error'] == 'invalid'){ ?>
+            <div class="col-12 bg-danger text-white p-3 text-center">
+                La cible demandée est invalide.
+            </div>
+        <?php }
         
     ?>
     <div class="col-12  pt-4 pt-md-5 pb-md-5">
