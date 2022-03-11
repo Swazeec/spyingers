@@ -16,7 +16,7 @@ if(getenv('JAWSDB_URL') !== false){
 }
 
 try{
-    $bdd = new PDO('mysql:host=$hostname;dbname=$database;charset=utf8mb4', $username, $password);
+    $bdd = new PDO("mysql:host=$hostname;dbname=$database;charset=utf8mb4", $username, $password);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo 'Impossible de se connecter à la base de données' . $e->getMessage();
