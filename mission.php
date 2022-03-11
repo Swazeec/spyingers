@@ -98,7 +98,7 @@ if(!isset($_GET['mission']) || intval($_GET['mission']) ===0){
 
         <!-- entête de la section -->
         <div class="col-12  pt-4 pt-md-5 pb-md-5 mb-3 mb-md-0">
-            <h2 class=" text-white text-center pb-3"><?php echo mb_strtoupper($missionDetail['title'])  ?> </h2>      
+            <h2 class=" text-white text-uppercase text-center pb-3"><?php echo $missionDetail['title']  ?> </h2>      
             <div class="row mr-auto d-flex justify-content-center ">
                 <p class="col-8 col-md-4 rounded-pill blue39 text-center p-1" id="status"><?php echo $missionDetail['status']  ?></p>
             </div>      
@@ -176,7 +176,7 @@ if(!isset($_GET['mission']) || intval($_GET['mission']) ===0){
             </article>
         </div>
     <?php    
-        }
+        } 
     }
     
 
@@ -219,17 +219,10 @@ if(isset($_SESSION['connect'])){ ?>
 <?php }
 ?>
 
+        </section>
 
-
-
-</section>
-<!-- espace navigation retour
-<nav class="row pagination ">
-    <a href="javascript:history.back()" class="col-12 align-items-center text-white ">
-        <i class="bi bi-arrow-left"> retour</i>
-    </a>
-</nav> -->
-<?php require_once ('./src/footer.php');
+<?php 
+require_once ('./src/footer.php');
 }?>
 
 <script src="./src/scripts/missionDetails.js"></script>
