@@ -180,7 +180,6 @@ if(!isset($_GET['mission']) || intval($_GET['mission']) ===0){
     }
     
 
-}
 
 if(isset($_SESSION['connect'])){ ?>
     <div class="modal" tabindex="-1" id="modifyMission">
@@ -230,7 +229,8 @@ if(isset($_SESSION['connect'])){ ?>
         <i class="bi bi-arrow-left"> retour</i>
     </a>
 </nav> -->
-<?php require_once ('./src/footer.php');?>
+<?php require_once ('./src/footer.php');
+}?>
 
 <script src="./src/scripts/missionDetails.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
