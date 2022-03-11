@@ -140,13 +140,7 @@ if(isset($_SESSION['connect'])){
     </div>
     
 </section>
-<nav class="row pagination">
-    <div class="col-12 ">
-        <p class=" text-center text-white">
-            insérer ici la pagination si besoin
-        </p> 
-    </div>
-</nav>
+
 <?php require_once ('./src/footer.php'); ?>
 
 <script src="./src/scripts/script.js"></script>

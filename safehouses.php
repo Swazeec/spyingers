@@ -31,17 +31,13 @@ if(isset($_SESSION['connect'])){
         <?php }
         if(isset($_GET['update']) && $_GET['update'] == 'success'){ ?>
             <div class="col-12 bg-success text-white p-3 text-center">
-                Agent modifié avec succès !
+                Planque modifiée avec succès !
             </div>
         <?php }
-        if(isset($_GET['update']) && $_GET['update'] == 'error'){ ?>
-            <div class="col-12 bg-danger text-white p-3 text-center">
-                Une erreur est survenue lors de la modification de votre agent.
-            </div>
-        <?php }
+        
         if(isset($_GET['error']) && $_GET['error'] == 'invalid'){ ?>
             <div class="col-12 bg-danger text-white p-3 text-center">
-                L'agent demandé est invalide ou n'est pas disponible.
+                La planque demandée est invalide.
             </div>
         <?php }
         
@@ -141,7 +137,7 @@ if(isset($_SESSION['connect'])){
                         <div class="card-body ">
                             <h5 class="card-title fw-bold fs-6 d-flex justify-content-between"><?php echo $safehouse['code']  ?> 
                                 <span>
-                                    <a class="btn py-0 text-primary" href="./modify-safehouse.php?agent=<?= $safehouse['id'] ?>" ><i class="bi bi-pencil"></i></a>
+                                    <a class="btn py-0 text-primary" href="./modify-safehouse.php?safehouse=<?= $safehouse['id'] ?>" ><i class="bi bi-pencil"></i></a>
                                     <a class="btn py-0 text-danger" href="./safehouses.php?delete=<?= $safehouse['id'] ?>"><i class="bi bi-trash3-fill"></i></a>
                                 </span>
                             </h5>

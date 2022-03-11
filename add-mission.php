@@ -201,7 +201,7 @@ if(isset($_SESSION['connect'])){
                                         <?php } 
                                     } 
                                 // ON RECUP LES AGENTS DONT LES MISSIONS SONT FINIES ET DONT LA SPE MATCHE
-                                    $firstAgentsReq = $bdd->prepare('SELECT agents.id, agents.firstname, agents.lastname, agents.nationality_id, missions.status_id, specialities.name  FROM agents 
+                                    $firstAgentsReq = $bdd->prepare('SELECT DISTINCT agents.id, agents.firstname, agents.lastname, agents.nationality_id,  specialities.name  FROM agents 
                                     join agents_missions am ON am.agent_id = agents.id 
                                     join missions ON missions.id = am.mission_id 
                                     join agents_specialities ON agents_specialities.agent_id = agents.id
